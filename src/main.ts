@@ -23,7 +23,14 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 /* import specific icons */
 import {
     faPlus,
+    faHippo,
+    faUser
 } from '@fortawesome/free-solid-svg-icons';
-library.add(faPlus);
+library.add(faPlus, faHippo, faUser);
 
-createApp(App).use(pinia).use(router).use(ElementPlus).component('font-awesome-icon', FontAwesomeIcon).mount('#app');
+createApp(App)
+    .use(pinia)
+    .use(router)
+    .use(ElementPlus)
+    .component('font-awesome-icon', FontAwesomeIcon)
+    .mount('#app');
