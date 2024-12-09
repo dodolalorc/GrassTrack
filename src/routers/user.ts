@@ -28,14 +28,19 @@ export default [
       },
       {
         name: 'Profile',
-        path: '/profile',
+        path: 'profile',
         component: () => import('@/views/Profile/Profile.vue'),
       },
       {
         name: 'account',
-        path: '/account',
+        path: 'account',
         component: () => import('@/views/Account/Account.vue'),
       },
     ],
   },
+  {
+    name: 'Login',
+    path: '/login',
+    component: () => import('@/views/LogReg/index.vue'),
+  }
 ] as RouteRecordRaw[];

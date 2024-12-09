@@ -1,7 +1,7 @@
 <template>
   <!-- 白色遮罩层 -->
+  <div class="bg-pasture-bg absolute top-0 left-0 inset-0 bg-no-repeat bg-center bg-cover blur-sm opacity-80 bg-fixed" />
   <div class="white-overlay" />
-  <div class="bg-pasture-bg absolute top-0 left-0 inset-0 bg-no-repeat bg-center bg-cover blur-sm opacity-80 bg-fixed "></div>
 </template>
 <style scoped lang="scss">
 .white-overlay {
@@ -12,9 +12,7 @@
   height: 100%;
   background-color: white;
   opacity: 0.5;
-  /* 调整透明度 */
-  z-index: 1;
-  /* 确保遮罩层在最上层 */
+  z-index: 0;
 }
 
 .bush {
