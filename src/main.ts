@@ -22,15 +22,30 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 /* import specific icons */
 import {
-    faPlus,
-    faHippo,
-    faUser
+  faPlus,
+  faHippo,
+  faUser,
+  faSun,
+  faHouse,
+  faGear,
+  faTractor,
+  faCow,
+  faLeaf,
+  faCog,
+  faUpload,
+  faBalanceScale,
+  faClockRotateLeft,
+  faQuestion,
+  faMessage,
+  faX,
+  faCheck,
+  faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
-library.add(faPlus, faHippo, faUser);
+library.add(faPlus, faHippo, faUser, faSun, faHouse, faGear, faTractor, faCow, faLeaf, faCog, faUpload, faBalanceScale, faClockRotateLeft, faQuestion, faMessage, faX, faCheck, faEnvelope);
 
 createApp(App)
-    .use(pinia)
-    .use(router)
-    .use(ElementPlus)
-    .component('font-awesome-icon', FontAwesomeIcon)
-    .mount('#app');
+  .use(pinia)
+  .use(router)
+  .use(ElementPlus)
+  .component('font-awesome-icon', FontAwesomeIcon)
+  .mount('#app');

@@ -4,19 +4,38 @@ export default [
   {
     name: 'Home',
     path: '/',
-    redirect: '/farm',
     component: () => import('@/views/Home.vue'),
     children: [
       {
-        name: 'Farm',
-        path: 'farm',
-        component: () => import('@/views/Farm/Farm.vue'),
+        name: 'Dashboard',
+        path: '',
+        component: () => import('@/views/Dashboard/Dashboard.vue'),
+      },
+      {
+        name: 'Cattle',
+        path: 'Cattle',
+        component: () => import('@/views/Cattle/Cattle.vue'),
+      },
+      {
+        name: 'Forage',
+        path: 'forage',
+        component: () => import('@/views/Forage/Forage.vue'),
+      },
+      {
+        name: 'Submissions',
+        path: 'submit',
+        component: () => import('@/views/Submissions/Submissions.vue'),
+      },
+      {
+        name: 'Profile',
+        path: '/profile',
+        component: () => import('@/views/Profile/Profile.vue'),
+      },
+      {
+        name: 'account',
+        path: '/account',
+        component: () => import('@/views/Account/Account.vue'),
       },
     ],
   },
-  {
-    name: 'user',
-    path: '/profile',
-    component: () => import('@/views/Profile/Profile.vue'),
-  }
 ] as RouteRecordRaw[];
