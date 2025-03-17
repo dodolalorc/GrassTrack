@@ -26,16 +26,6 @@ export default [
         path: 'submit',
         component: () => import('@/views/Submissions/Submissions.vue'),
       },
-      {
-        name: 'Profile',
-        path: 'profile',
-        component: () => import('@/views/Profile/Profile.vue'),
-      },
-      {
-        name: 'account',
-        path: 'account',
-        component: () => import('@/views/Account/Account.vue'),
-      },
     ],
   },
   {

@@ -6,10 +6,10 @@
         <AppHeader />
       </el-header>
       <el-container class="h-full flex-1">
-        <el-aside class="h-full w-10 bg-green-950/80" width="280px">
+        <el-aside class="h-full w-10 bg-green-950/80" width="240px">
           <AppAside />
         </el-aside>
-        <el-main class="bg-white/50 rounded-sm m-2">
+        <el-main class="bg-white/50 rounded-sm p-2">
           <router-view />
         </el-main>
       </el-container>

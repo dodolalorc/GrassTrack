@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'pasture-bg': "url('/src/assets/img/pasture.jpg')",
+        'pasture-bg': "url('/src/assets/img/pasture.png')",
       },
       backgroundColor: {
         'spring-main': '#3d3753',
