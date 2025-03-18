@@ -40,8 +40,14 @@ import {
   faX,
   faCheck,
   faEnvelope,
+  faGrip,
 } from '@fortawesome/free-solid-svg-icons';
-library.add(faPlus, faHippo, faUser, faSun, faHouse, faGear, faTractor, faCow, faLeaf, faCog, faUpload, faBalanceScale, faClockRotateLeft, faQuestion, faMessage, faX, faCheck, faEnvelope);
+
+import {
+  faPenToSquare,
+} from '@fortawesome/free-regular-svg-icons';
+
+library.add(faPlus, faHippo, faUser, faSun, faHouse, faGear, faTractor, faCow, faLeaf, faCog, faUpload, faBalanceScale, faClockRotateLeft, faQuestion, faMessage, faX, faCheck, faEnvelope, faGrip, faPenToSquare);
 
 createApp(App)
   .use(pinia)

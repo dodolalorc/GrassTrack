@@ -1,13 +1,16 @@
 <template>
   <div class="w-full h-full flex justify-between items-center">
-    <div class="text-2xl font-extrabold hover:cursor-pointer" @click="handleClickTitle">
+    <div class="text-2xl font-extrabold hover:cursor-pointer flex flex-row" @click="handleClickTitle">
+      <span v-if="curDevice !== 'desktop'" class="pr-2">
+        <font-awesome-icon icon="fa-solid fa-grip" />
+      </span>
       <SiteTitle />
     </div>
     <div class="flex h-full justify-center items-center">
       <span v-if="curDevice !== 'mobile'" class="font-bold text-center text-xl pr-6">
         亲爱的牧民，欢迎回来！
       </span>
-      <div class="px-5 md:px-10 avatar-container relative">
+      <div class="px-0 md:px-10 avatar-container relative">
         <el-dropdown v-if="curDevice === 'desktop'" :hide-on-click="false" @command="handleCommand">
           <el-avatar size="large" :src="avatar" class="hover:scale-150 transition duration-500 hover:cursor-pointer" />
           <template #dropdown>

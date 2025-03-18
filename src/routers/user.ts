@@ -22,6 +22,11 @@ export default [
         component: () => import('@/views/Forage/Forage.vue'),
       },
       {
+        name: 'Balance',
+        path: 'balance',
+        component: () => import('@/views/Balance/Balance.vue'),
+      },
+      {
         name: 'Submit',
         path: 'question/submit',
         component: () => import('@/views/Submissions/Submissions.vue'),

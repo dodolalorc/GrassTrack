@@ -129,7 +129,7 @@ const menuList = ref<MenuItem[]>([
     link: '/cattle',
   },
   {
-    title: '草场管理',
+    title: '牧场管理',
     icon: 'fa-solid fa-leaf',
     name: 'Forage',
     link: '/forage'
