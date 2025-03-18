@@ -1,14 +1,14 @@
 <template>
   <div class="w-full h-full flex justify-between items-center">
-    <div class="text-2xl font-extrabold">
-      {{ title }}
+    <div class="text-2xl font-extrabold hover:cursor-pointer" @click="handleClickTitle">
+      <SiteTitle />
     </div>
     <div class="flex h-full justify-center items-center">
-      <span class="font-bold text-center text-xl pr-6">
+      <span v-if="curDevice !== 'mobile'" class="font-bold text-center text-xl pr-6">
         亲爱的牧民，欢迎回来！
       </span>
-      <div class="px-10 avatar-container relative">
-        <el-dropdown :hide-on-click="false" @command="handleCommand">
+      <div class="px-5 md:px-10 avatar-container relative">
+        <el-dropdown v-if="curDevice === 'desktop'" :hide-on-click="false" @command="handleCommand">
           <el-avatar size="large" :src="avatar" class="hover:scale-150 transition duration-500 hover:cursor-pointer" />
           <template #dropdown>
             <el-dropdown-menu>
@@ -17,79 +17,66 @@
             </el-dropdown-menu>
           </template>
         </el-dropdown>
+
+        <div v-else>
+          <el-avatar size="large" :src="avatar" class="hover:scale-150 transition duration-500 hover:cursor-pointer"
+            @click="handleClickAvatar" />
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- 信息框 -->
-  <el-dialog v-model="dialogVisible" width="900" align-center>
-    <div class="flex flex-col items-center w-full h-[36rem]">
-      <TabGroup>
-        <TabList :class="['flex flex-row space-x-1 divide-x-2 rounded-xl w-full h-full p-1']">
-          <div class="w-1/5 h-full flex flex-col justify-items-start rounded-md p-2 bg-slate-400/20 ">
-            <div class="w-full h-32">
-              <h2 class="max-w-lg text-[1.6rem]/10 font-medium tracking-tighter text-balance max-sm:px-4 2xl:mt-0">
-                账户设置
-              </h2>
-              <span class="font-normal">
-                在这里可以查看和修改您的个人信息，以及您的账号信息
-              </span>
-            </div>
-            <Tab v-for="category in categories" as="template" :key="category.key" v-slot="{ selected }">
-              <button :class="[
-                ' rounded-lg py-2.5 font-bold leading-3 shadow-sm mt-1',
-                'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none',
-                selected
-                  ? 'bg-blue-400 text-white font-semibold shadow'
-                  : 'text-black hover:bg-white/[0.12] hover:text-blue-400',
-              ]">
-                {{ category.content }}
-              </button>
-            </Tab>
-          </div>
-          <TabPanels class="mt-2 flex-1 w-4/5 h-full">
-            <TabPanel key="profile" :class="[
-              'rounded-xl bg-white p-3',
-              'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none',
-            ]">
-              <ProfileCard />
-            </TabPanel>
-            <TabPanel key="account" :class="[
-              'rounded-xl bg-white p-3',
-              'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none',
-            ]">
-              <AccountCard />
-            </TabPanel>
-          </TabPanels>
-        </TabList>
-      </TabGroup>
-    </div>
-  </el-dialog>
+  <infoCard v-model:current-tab="currentTab" v-model:dialog-visible="dialogVisible" />
+
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { onMounted } from 'vue';
+import SiteTitle from './SiteTitle.vue';
+import { checkDevice } from '@/utils/checkDevice';
 import avatar from '@/assets/img/avatar.jpg';
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
-import ProfileCard from '@/components/common/cards/ProfileCard.vue';
-import AccountCard from '@/components/common/cards/AccountCard.vue';
-import { ElMessage } from 'element-plus';
+import { useRouter } from 'vue-router';
+import infoCard from '../infoDialogCard/infoCard.vue';
 
-const categories = ref({
-  'profile': {
-    key: 'profile',
-    title: '个人资料',
-    content: '个人资料'
-  },
-  'account': {
-    key: 'account',
-    title: '账号信息',
-    content: '账号信息'
-  }
+const router = useRouter();
+
+const curDevice = ref('mobile');
+onMounted(() => {
+  curDevice.value = checkDevice();
 });
+
+const drawerVisible = defineModel('drawerVisible', {
+  default: false,
+  type: Boolean,
+});
+const drawerType = defineModel('drawerType', {
+  default: 'menuList',
+  type: String,
+});
+
+const handleClickTitle = () => {
+
+  if (curDevice.value === 'desktop') { // 非移动端跳转首页
+    router.push('/');
+  } else {
+    // 从上往下展开侧边栏
+    drawerVisible.value = true;
+    drawerType.value = 'menuList';
+  }
+}
+const handleClickAvatar = () => {
+  if (curDevice.value === 'desktop') { // 非移动端跳转首页
+    router.push('/');
+  } else {
+    // 从上往下展开侧边栏
+    drawerVisible.value = true;
+    drawerType.value = 'infoList';
+  }
+}
+
 const dialogVisible = ref(false);
 const currentTab = ref('profile');
-const title = ref('草畜平衡决策预警系统');
 
 const handleCommand = (command: string | number | object) => {
   if (command === 'profile') {
@@ -100,5 +87,6 @@ const handleCommand = (command: string | number | object) => {
     dialogVisible.value = true;
   }
 }
+
 
 </script>

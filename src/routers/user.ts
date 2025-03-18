@@ -22,10 +22,25 @@ export default [
         component: () => import('@/views/Forage/Forage.vue'),
       },
       {
-        name: 'Submissions',
-        path: 'submit',
+        name: 'Submit',
+        path: 'question/submit',
         component: () => import('@/views/Submissions/Submissions.vue'),
       },
+      {
+        name: 'History',
+        path: 'question/history',
+        component: () => import('@/views/Submissions/History.vue'),
+      },
+      {
+        name: 'Profile',
+        path: 'profile',
+        component: () => import('@/views/Accounts/Profile.vue'),
+      },
+      {
+        name: 'Account',
+        path: 'account',
+        component: () => import('@/views/Accounts/Account.vue'),
+      }
     ],
   },
   {
