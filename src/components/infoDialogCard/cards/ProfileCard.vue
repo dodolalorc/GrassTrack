@@ -73,7 +73,7 @@
 import { ref } from 'vue';
 import avatar from '@/assets/img/avatar.jpg';
 import { ElMessage } from 'element-plus';
-import { UserInfo } from '@/types/ueseInfo';
+import { UserInfo } from '@/types/userInfo';
 
 const editStatus = ref(false);
 const updateInfo = () => {

@@ -15,38 +15,6 @@
   z-index: 0;
 }
 
-.bush {
-  z-index: 0;
-  width: 90px;
-  height: 40px;
-  bottom: 0px;
-  left: 0;
-  background-color: #268a02;
-  border-radius: 50px 50px 0 0;
-}
-
-.cloud-t {
-  z-index: 0;
-  width: 120px;
-  height: 40px;
-  bottom: 0px;
-  left: 0;
-  background-color: #ffffff;
-  border-radius: 50px;
-  animation: float-left 5s infinite;
-}
-
-.cloud-b {
-  z-index: 0;
-  width: 150px;
-  height: 50px;
-  bottom: 0px;
-  left: 0;
-  background-color: #ffffff;
-  border-radius: 50px;
-  animation: float-right 5s infinite;
-}
-
 @keyframes float-left {
   0% {
     transform: translateX(0);

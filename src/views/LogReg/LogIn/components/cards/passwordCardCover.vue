@@ -1,5 +1,6 @@
 <template>
-    <div :class="fipped ? 'bg-white relative w-full duration-500 h-64' : 'bg-white relative w-full duration-500 h-64'">
+    <div
+        :class="[ fipped ? 'bg-white relative w-full duration-500 h-full' : 'bg-white relative w-full duration-500 h-full']">
         <div v-if="!fipped" :class="fipped ? 'front-fipped' : 'front'">
             <passwordCard v-model="fipped" />
         </div>
@@ -10,6 +11,7 @@
 </template>
 
 <style scoped>
+
 .h-32rem {
     height: 32rem;
 }
@@ -19,9 +21,10 @@
     perspective: 1000px;
     backface-visibility: hidden;
     transition: 0.6s ease-in-out;
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     height: 100%;
+    height: fit-content;
     background-color: white;
     z-index: 2;
     margin: auto;
@@ -32,7 +35,7 @@
     perspective: 1000px;
     transition: 0.6s ease-in-out;
     backface-visibility: hidden;
-    position: absolute;
+    /* position: absolute; */
     transform: rotateY(180deg);
     width: 100%;
     height: 100%;
@@ -45,7 +48,7 @@
     perspective: 1000px;
     transition: 0.6s ease-in-out;
     backface-visibility: hidden;
-    position: absolute;
+    /* position: absolute; */
     transform: rotateY(-180deg);
     width: 100%;
     height: 100%;
@@ -58,7 +61,7 @@
     perspective: 1000px;
     transition: 0.6s ease-in-out;
     backface-visibility: hidden;
-    position: absolute;
+    /* position: absolute; */
     transform: rotateY(0deg);
     width: 100%;
     height: 100%;

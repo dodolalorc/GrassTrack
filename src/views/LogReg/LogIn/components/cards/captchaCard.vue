@@ -14,10 +14,11 @@
       </el-form-item>
     </div>
   </el-form>
-  <div class="mt-4 flex items-center justify-end gap-x-6">
+  <div class="mt-4 flex flex-col items-center justify-end gap-x-6">
     <button type="submit"
       class="flex w-full items-center justify-center rounded-md border border-transparent bg-yellow-800/80 px-8 py-2 text-base font-medium text-white hover:bg-yellow-800 focus:outline-none focus:bg-yellow-800/90 focus:ring-offset-2 disabled:bg-yellow-800/50 disabled:cursor-not-allowed"
-      :disabled="ruleForm.phone === '' || !sended">注册并进入</button>
+      :disabled="ruleForm.phone === '' || !sended">立即登录</button>
+    <span class=" italic mt-2 ">没有账号?<a href="/signup" class="text-indigo-500">立即注册</a></span>
   </div>
 </template>
 

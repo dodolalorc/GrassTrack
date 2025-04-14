@@ -49,6 +49,9 @@ import {
 
 library.add(faPlus, faHippo, faUser, faSun, faHouse, faGear, faTractor, faCow, faLeaf, faCog, faUpload, faBalanceScale, faClockRotateLeft, faQuestion, faMessage, faX, faCheck, faEnvelope, faGrip, faPenToSquare);
 
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+console.log(import.meta.env.VITE_APP_API_URL);
+
 createApp(App)
   .use(pinia)
   .use(router)

@@ -51,6 +51,11 @@ export default [
   {
     name: 'Login',
     path: '/login',
-    component: () => import('@/views/LogReg/index.vue'),
+    component: () => import('@/views/LogReg/LogIn/index.vue'),
+  },
+  {
+    name: 'Register',
+    path: '/signup',
+    component: () => import('@/views/LogReg/SignUp/index.vue'),
   }
 ] as RouteRecordRaw[];

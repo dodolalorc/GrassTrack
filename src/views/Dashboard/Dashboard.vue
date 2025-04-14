@@ -9,7 +9,7 @@
       <div class="mb-2 md:mb-10 mt-5 w-full justify-items-center grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-4">
         <div v-for="i in 3"
           class="h-44 w-64 flex flex-col text-center justify-center px-10 ease-in-out shadow-md bg-slate-50 rounded-xl duration-100 hover:scale-110 hover:rounded-md">
-          <el-image :src="forageUrl" class="h-full w-full" fit="contain" />
+          <el-image :src="forageImage" class="h-full w-full" fit="contain" />
           <h1>牧场{{ i }}</h1>
         </div>
       </div>
@@ -79,8 +79,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-
-const forageUrl = '/src/assets/img/forage.png'
+import forageImage from '@/assets/img/forage.png';
 
 interface Cattle {
   name: string;
@@ -90,12 +89,12 @@ interface Cattle {
 const cattleList = ref<Cattle[]>([
   {
     name: '牛类',
-    url: '/src/assets/icon/cattle/ox.svg',
+    url: new URL('@/assets/icon/cattle/ox.svg', import.meta.url).href,
     count: 130,
   },
   {
     name: '羊类',
-    url: '/src/assets/icon/cattle/gost.svg',
+    url: new URL('@/assets/icon/cattle/sheep.svg', import.meta.url).href,
     count: 120,
   }
 ]);

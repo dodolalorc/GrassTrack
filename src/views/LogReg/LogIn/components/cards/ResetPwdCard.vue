@@ -1,6 +1,9 @@
 <template>
   <el-form ref="resetPwdRef" :model="resetPwdForm" :rules="Pwdrules" label-width="auto" label-position="top"
-    class="px-2 py-5">
+    class="px-2 py-5 h-full">
+    <!-- TODO:finish reset password view -->
+    <h1 class="w-full text-center font-extrabold italic">--开发中--</h1>
+
     <el-form-item label="邮箱" prop="email">
       <el-input v-model="resetPwdForm.email" placeholder="请输入邮箱" clearable />
     </el-form-item>
@@ -8,7 +11,7 @@
       <div class="flex w-full">
         <el-input v-model="resetPwdForm.code" placeholder="请检查邮箱并填写验证码" clearable />
         <button
-          class="border-transparent border rounded-md w-28 bg-blue-800/90 text-sm font-medium text-white hover:bg-blue-900  focus:outline-none focus: focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-blue-800/50 disabled:cursor-not-allowed"
+          class="border-transparent border rounded-md w-28 bg-yellow-800/90 text-sm font-medium text-white hover:bg-yellow-900  focus:outline-none focus: focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-yellow-800/50 disabled:cursor-not-allowed"
           :disabled="resetPwdForm.email === ''">
           {{ sended ? (counter <= 0 ? '重新发送' : counter + 's') : '发送验证码' }} </button>
       </div>
@@ -30,7 +33,7 @@
     </div>
     <div class="mt-6 flex items-center justify-end gap-x-6">
       <button
-        class="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-800/90 px-8 py-2 text-base font-medium text-white hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-blue-800/50 disabled:cursor-not-allowed"
+        class="flex w-full items-center justify-center rounded-md border border-transparent bg-yellow-800/90 px-8 py-2 text-base font-medium text-white hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-yellow-800/50 disabled:cursor-not-allowed"
         :disabled="resetPwdForm.email === '' || resetPwdForm.password === '' || resetPwdForm.phone_number === ''">修改密码并登录</button>
     </div>
   </el-form>

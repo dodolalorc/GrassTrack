@@ -6,7 +6,7 @@
         {{ title }}
       </span>
     </div>
-    <div class="w-full max-w-md px-2 py-4 sm:px-0">
+    <div class="w-full h-full max-w-md px-2 py-4 sm:px-0">
       <TabGroup>
         <TabList :class="['flex space-x-1 rounded-xl bg-yellow-800/80 p-1']">
           <Tab v-for="category in categories" as="template" :key="category.key" v-slot="{ selected }">
@@ -22,7 +22,7 @@
           </Tab>
         </TabList>
 
-        <TabPanels class="mt-2">
+        <TabPanels class="mt-2 h-full">
           <TabPanel key="login" :class="[
             'rounded-xl bg-white p-3',
             'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none',

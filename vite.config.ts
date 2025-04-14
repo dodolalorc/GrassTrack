@@ -10,8 +10,7 @@ export default defineConfig({
     },
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
   },
-  // 移除 root 配置或设置为项目根目录
-  root: './', // 或者直接删除这行
+  root: './',
   base: '/',
   publicDir: 'public',
   cacheDir: 'node_modules/.vite',
@@ -23,6 +22,13 @@ export default defineConfig({
     port: 5481,
     open: true,
     cors: true,
+    proxy: {
+      '/api': {
+        target: 'http://152.136.54.140',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   },
   build: {
     outDir: 'dist',
