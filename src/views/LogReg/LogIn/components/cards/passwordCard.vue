@@ -25,6 +25,10 @@ import { ref } from 'vue';
 import { ElMessage } from 'element-plus';
 import { userLoginByPswd } from '@/api/apis/user';
 import { userLoginByPswdResponse } from '@/types/apis/user';
+import { useRoute, useRouter } from 'vue-router';
+import { setUserBasicInfo } from '@/utils/initCheckInStatus';
+const route = useRoute();
+const router = useRouter();
 
 interface LoginData {
   username: string;
@@ -58,12 +62,14 @@ const rules = ref({
 const submitForm = (event: Event) => {
   event.preventDefault();
   userLoginByPswd(ruleForm.value).then((response) => {
-    console.log(response);
     const res = response.data as userLoginByPswdResponse;
-    console.log(res);
     if (res.code === 0) {
       ElMessage.success('登录成功');
-      localStorage.setItem('token', res.data.token);
+      const { name, token } = res.data;
+
+      setUserBasicInfo(token, name);
+
+      router.push('/')
     } else {
       ElMessage.error(res.msg);
     }

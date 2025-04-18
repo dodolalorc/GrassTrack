@@ -1,3 +1,4 @@
+import { UserInfo } from "../userInfo";
 export interface userLoginByPswdRes {
   username: string;
   password: string;
@@ -11,3 +12,5 @@ export interface userLoginByPswdResponse {
     token: string;
   }
 }
+
+export interface userRegisterRes extends userLoginByPswdRes, UserInfo { }

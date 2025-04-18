@@ -41,16 +41,17 @@ import {
   faCheck,
   faEnvelope,
   faGrip,
+  faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
   faPenToSquare,
 } from '@fortawesome/free-regular-svg-icons';
 
-library.add(faPlus, faHippo, faUser, faSun, faHouse, faGear, faTractor, faCow, faLeaf, faCog, faUpload, faBalanceScale, faClockRotateLeft, faQuestion, faMessage, faX, faCheck, faEnvelope, faGrip, faPenToSquare);
+library.add(faPlus, faHippo, faUser, faSun, faHouse, faGear, faTractor, faCow, faLeaf, faCog, faUpload, faBalanceScale, faClockRotateLeft, faQuestion, faMessage, faX, faCheck, faEnvelope, faGrip, faPenToSquare, faRightFromBracket);
 
-console.log('process.env.NODE_ENV', process.env.NODE_ENV);
-console.log(import.meta.env.VITE_APP_API_URL);
+// console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+// console.log(import.meta.env.VITE_APP_API_URL);
 
 createApp(App)
   .use(pinia)

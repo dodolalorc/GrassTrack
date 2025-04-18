@@ -4,6 +4,7 @@ export default [
   {
     name: 'Home',
     path: '/',
+    meta: { requiresAuth: true },
     component: () => import('@/views/Home.vue'),
     children: [
       {
@@ -51,11 +52,13 @@ export default [
   {
     name: 'Login',
     path: '/login',
+    meta: { requiresAuth: false },
     component: () => import('@/views/LogReg/LogIn/index.vue'),
   },
   {
     name: 'Register',
     path: '/signup',
+    meta: { requiresAuth: false },
     component: () => import('@/views/LogReg/SignUp/index.vue'),
   }
 ] as RouteRecordRaw[];

@@ -18,44 +18,46 @@
                 {{ person.name }}
               </span>
             </el-descriptions-item>
-            <el-descriptions-item label="性别">
-              <span v-if="editStatus">
-                <el-input v-model="person.sex" size="small" />
-              </span>
-              <span v-else>
-                {{ person.sex }}
-              </span>
-            </el-descriptions-item>
-            <el-descriptions-item label="年龄">
-              <span v-if="editStatus">
-                <el-input v-model="person.age" size="small" />
-              </span>
-              <span v-else>
-                {{ person.age }}
-              </span>
-            </el-descriptions-item>
             <el-descriptions-item label="手机号码">
               <span>
-                {{ person.phoneNumber }}
+                {{ person.username }}
+              </span>
+            </el-descriptions-item>
+            <el-descriptions-item label="家庭人口数">
+              <span>
+                {{ person.size }}
+              </span>
+            </el-descriptions-item>
+            <el-descriptions-item label="省份">
+              <span v-if="editStatus">
+                <el-input v-model="person.province" size="small" />
+              </span>
+              <span v-else>
+                {{ person.province }}
               </span>
             </el-descriptions-item>
             <el-descriptions-item label="地区">
               <span v-if="editStatus">
-                <el-input v-model="person.region" size="small" />
+                <el-input v-model="person.area" size="small" />
               </span>
               <span v-else>
-                {{ person.region }}
+                {{ person.area }}
               </span>
             </el-descriptions-item>
-            <el-descriptions-item label="类型">
-              <el-tag v-for="item in person.type" :key="item" type="success">{{ item }}</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item label="我的住址">
+            <el-descriptions-item label="乡镇">
               <span v-if="editStatus">
-                <el-input v-model="person.address" size="small" />
+                <el-input v-model="person.town" size="small" />
               </span>
               <span v-else>
-                {{ person.address }}
+                {{ person.town }}
+              </span>
+            </el-descriptions-item>
+            <el-descriptions-item label="村">
+              <span v-if="editStatus">
+                <el-input v-model="person.village" size="small" />
+              </span>
+              <span v-else>
+                {{ person.village }}
               </span>
             </el-descriptions-item>
           </el-descriptions>
@@ -86,14 +88,13 @@ const updateInfo = () => {
 };
 
 const person = ref<UserInfo>({
-  avatar: avatar,
-  sex: '男',
-  age: 38,
-  name: '张多羊',
-  phoneNumber: '18888888888',
-  region: '呼和浩特',
-  type: ['牧羊人'],
-  address: '内蒙古省呼和浩特市赛罕区',
+  name: "",
+  username: "",
+  province: "",
+  area: "",
+  town: "",
+  village: "",
+  size: 1,
 });
 
 </script>

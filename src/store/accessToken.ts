@@ -3,19 +3,29 @@ import { defineStore } from 'pinia';
 export const useAccessTokenStore = defineStore('accessToken', {
   state: () => {
     return {
+      name: '' as string,
       token: '' as string,
     };
   },
   getters: {
+    getName: (state) => () => {
+      return state.name;
+    },
     getAccessToken: (state) => () => {
       return state.token;
     },
   },
   actions: {
-    setToken(token: string) {
+    setName(name: string) {
+      this.name = name;
+    },
+    removeName() {
+      this.name = '';
+    },
+    setAccessToken(token: string) {
       this.token = token;
     },
-    removeToken() {
+    removeAccessToken() {
       this.token = '';
     },
   },

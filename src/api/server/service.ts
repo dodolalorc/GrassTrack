@@ -4,7 +4,6 @@ import axios from 'axios';
 
 // const baseUrl = import.meta.env.VITE_APP_API_URL;
 const baseUrl = '/api'
-// console.log('baseUrl', baseUrl)
 // 创建axios实例
 const service = axios.create({
   baseURL: baseUrl, // api的base_url
@@ -19,7 +18,7 @@ service.interceptors.request.use(
     // 请求头携带token
     const token = useAccessTokenStore().getAccessToken();
     if (token !== '') {
-      config.headers['Authorization'] = token;
+      config.headers['token'] = token;
       return config;
     }
     return config;
