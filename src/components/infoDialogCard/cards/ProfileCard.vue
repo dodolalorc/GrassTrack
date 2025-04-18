@@ -6,26 +6,32 @@
     <div>
       <div class="w-full grid grid-cols-1 gap-4 divide-y-2 divide-gray-200">
         <div class="w-full h-full flex flex-col justify-between items-center">
-          <el-descriptions direction="vertical" border style="margin-top: 20px; width: 100%">
-            <el-descriptions-item :rowspan="3" :width="140" label="照片" align="center">
-              <el-image style="width: 100px; height: 100px" :src="person.avatar" />
+          <el-descriptions direction="vertical" border style="margin-top: 20px; width: 100%" :column="5">
+            <el-descriptions-item :rowspan="2" :width="140" label="照片" align="center">
+              <el-image style="width: 100px; height: 100px" :src="person.avatar ? avatar : person.avatar" />
             </el-descriptions-item>
-            <el-descriptions-item label="姓名">
+            <el-descriptions-item label="姓名" :span="4">
               <span v-if="editStatus">
                 <el-input v-model="person.name" size="small" />
               </span>
               <span v-else>
-                {{ person.name }}
+                {{ person.name === '' ? '未设置' : person.name }}
               </span>
             </el-descriptions-item>
-            <el-descriptions-item label="手机号码">
-              <span>
-                {{ person.username }}
+            <el-descriptions-item label="手机号码" :span="2">
+              <span v-if="editStatus">
+                <el-input v-model="person.phone" size="small" />
+              </span>
+              <span v-else>
+                {{ person.username === '' ? '未设置' : person.phone }}
               </span>
             </el-descriptions-item>
-            <el-descriptions-item label="家庭人口数">
-              <span>
-                {{ person.size }}
+            <el-descriptions-item label="家庭人口数" :span="2">
+              <span v-if="editStatus">
+                <el-input v-model="person.size" size="small" />
+              </span>
+              <span v-else>
+                {{ person.size === 0 ? '未设置' : person.size }}
               </span>
             </el-descriptions-item>
             <el-descriptions-item label="省份">
@@ -33,7 +39,7 @@
                 <el-input v-model="person.province" size="small" />
               </span>
               <span v-else>
-                {{ person.province }}
+                {{ person.province === '' ? '未设置' : person.province }}
               </span>
             </el-descriptions-item>
             <el-descriptions-item label="地区">
@@ -41,7 +47,7 @@
                 <el-input v-model="person.area" size="small" />
               </span>
               <span v-else>
-                {{ person.area }}
+                {{ person.area === '' ? '未设置' : person.area }}
               </span>
             </el-descriptions-item>
             <el-descriptions-item label="乡镇">
@@ -49,7 +55,7 @@
                 <el-input v-model="person.town" size="small" />
               </span>
               <span v-else>
-                {{ person.town }}
+                {{ person.town === '' ? '未设置' : person.town }}
               </span>
             </el-descriptions-item>
             <el-descriptions-item label="村">
@@ -57,7 +63,7 @@
                 <el-input v-model="person.village" size="small" />
               </span>
               <span v-else>
-                {{ person.village }}
+                {{ person.village === '' ? '未设置' : person.village }}
               </span>
             </el-descriptions-item>
           </el-descriptions>
@@ -76,11 +82,21 @@ import { ref } from 'vue';
 import avatar from '@/assets/img/avatar.jpg';
 import { ElMessage } from 'element-plus';
 import { UserInfo } from '@/types/userInfo';
+import { useUserProfileStore } from '@/store/userProfile';
+import { userUpdateProfile } from '@/api/apis/user';
 
 const editStatus = ref(false);
 const updateInfo = () => {
   if (editStatus.value) {
-    ElMessage.success('修改成功');
+    userUpdateProfile(person.value).then((response) => {
+      const res = response.data;
+      if (res.code === 0) {
+        useUserProfileStore().setUserInfo(person.value);
+        ElMessage.success('修改成功');
+      } else {
+        ElMessage.error('修改失败');
+      }
+    });
   } else {
     ElMessage.success('进入编辑状态');
   }
@@ -88,13 +104,21 @@ const updateInfo = () => {
 };
 
 const person = ref<UserInfo>({
+  avatar: '',
   name: "",
   username: "",
+  phone: "",
   province: "",
   area: "",
   town: "",
   village: "",
   size: 1,
 });
+
+const getUserInfo = () => {
+  person.value = useUserProfileStore().getUserInfo;
+};
+
+getUserInfo();
 
 </script>

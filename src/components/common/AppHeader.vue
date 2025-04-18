@@ -53,6 +53,7 @@ import { useRouter } from 'vue-router';
 import infoCard from '../infoDialogCard/infoCard.vue';
 import { useAccessTokenStore } from '@/store/accessToken';
 import { ElMessage, ElMessageBox } from 'element-plus';
+import { userLogout } from '@/api/apis/user';
 
 const router = useRouter();
 
@@ -119,6 +120,12 @@ const handleLogout = () => {
 }
 
 const logout = () => {
+  userLogout().finally(() => {
+    clearUserInfo();
+  });
+}
+
+const clearUserInfo = () => {
   const accessTokenStore = useAccessTokenStore();
   accessTokenStore.removeAccessToken();
   accessTokenStore.removeName();
