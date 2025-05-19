@@ -1,7 +1,7 @@
 <template>
   <div class="flex px-5 pt-5 flex-col bg-white rounded-xl shadow-lg h-auto ease-in-out duration-500 z-20 w-96">
     <div class="text-2xl font-extrabold text-center flex justify-center items-center mx-2">
-      <el-image src="/src/assets/icon.svg" class="w-12" />
+      <el-image :src="Icon" class="w-12" />
       <span class="h-full w-full">
         {{ title }}
       </span>
@@ -46,6 +46,7 @@ import { ref } from 'vue';
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
 import LoginCardCover from './cards/passwordCardCover.vue';
 import RegisterCard from './cards/captchaCard.vue';
+import Icon from "@/assets/icon.svg";
 
 const title = ref('草畜平衡决策预警系统');
 

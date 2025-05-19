@@ -40,12 +40,12 @@ export default [
       {
         name: 'Profile',
         path: 'profile',
-        component: () => import('@/views/Accounts/Profile.vue'),
+        component: () => import('@/views/Accounts/profile.vue'),
       },
       {
         name: 'Account',
         path: 'account',
-        component: () => import('@/views/Accounts/Account.vue'),
+        component: () => import('@/views/Accounts/account.vue'),
       }
     ],
   },

@@ -1,6 +1,5 @@
 import { UserInfo } from "../userInfo";
 export interface userLoginByPswdRes {
-  username: string;
   password: string;
 }
 
