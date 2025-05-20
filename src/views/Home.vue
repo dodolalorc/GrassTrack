@@ -19,19 +19,18 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { onMounted } from 'vue';
-import BackGround from '@/components/common/BackGround.vue';
-import AppAside from '@/components/common/AppAside.vue';
-import AppHeader from '@/components/common/AppHeader.vue';
-import { checkDevice } from '@/utils/checkDevice';
+import { ref } from "vue";
+import { onMounted } from "vue";
+import BackGround from "@/components/common/BackGround.vue";
+import AppAside from "@/components/common/AppAside.vue";
+import AppHeader from "@/components/common/AppHeader.vue";
+import { checkDevice } from "@/utils/checkDevice";
 
-const curDevice = ref('mobile');
+const curDevice = ref("mobile");
 onMounted(() => {
-  curDevice.value = checkDevice();
+	curDevice.value = checkDevice();
 });
 
 const drawerVisible = ref(false);
-const drawerType = ref('menuList');
-
+const drawerType = ref("menuList");
 </script>

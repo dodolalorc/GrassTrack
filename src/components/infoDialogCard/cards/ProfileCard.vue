@@ -78,47 +78,46 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-import avatar from '@/assets/img/avatar.jpg';
-import { ElMessage } from 'element-plus';
-import { UserInfo } from '@/types/userInfo';
-import { useUserProfileStore } from '@/store/userProfile';
-import { userUpdateProfile } from '@/api/apis/user';
+import { ref } from "vue";
+import avatar from "@/assets/img/avatar.jpg";
+import { ElMessage } from "element-plus";
+import type { UserInfo } from "@/types/userInfo";
+import { useUserProfileStore } from "@/store/userProfile";
+import { userUpdateProfile } from "@/api/apis/user";
 
 const editStatus = ref(false);
 const updateInfo = () => {
-  if (editStatus.value) {
-    userUpdateProfile(person.value).then((response) => {
-      const res = response.data;
-      if (res.code === 0) {
-        useUserProfileStore().setUserInfo(person.value);
-        ElMessage.success('修改成功');
-      } else {
-        ElMessage.error('修改失败');
-      }
-    });
-  } else {
-    ElMessage.success('进入编辑状态');
-  }
-  editStatus.value = !editStatus.value;
+	if (editStatus.value) {
+		userUpdateProfile(person.value).then((response) => {
+			const res = response.data;
+			if (res.code === 0) {
+				useUserProfileStore().setUserInfo(person.value);
+				ElMessage.success("修改成功");
+			} else {
+				ElMessage.error("修改失败");
+			}
+		});
+	} else {
+		ElMessage.success("进入编辑状态");
+	}
+	editStatus.value = !editStatus.value;
 };
 
 const person = ref<UserInfo>({
-  avatar: '',
-  name: "",
-  username: "",
-  phone: "",
-  province: "",
-  area: "",
-  town: "",
-  village: "",
-  size: 1,
+	avatar: "",
+	name: "",
+	username: "",
+	phone: "",
+	province: "",
+	area: "",
+	town: "",
+	village: "",
+	size: 1,
 });
 
 const getUserInfo = () => {
-  person.value = useUserProfileStore().getUserInfo;
+	person.value = useUserProfileStore().getUserInfo;
 };
 
 getUserInfo();
-
 </script>

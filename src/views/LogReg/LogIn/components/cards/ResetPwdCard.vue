@@ -40,32 +40,32 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { ElMessage } from 'element-plus';
+import { ref } from "vue";
+import { ElMessage } from "element-plus";
 
 const studentResetPwdData = ref({
-  email: '',
-  password: '',
-  phone_number: '',
-  code: ''
+	email: "",
+	password: "",
+	phone_number: "",
+	code: "",
 });
 
 interface ResetPwdData {
-  email: string;
-  phone_number: string;
-  password: string;
-  code: string;
-  check_password: string;
+	email: string;
+	phone_number: string;
+	password: string;
+	code: string;
+	check_password: string;
 }
 
 const resetPwdRef = ref();
 
 const resetPwdForm = ref<ResetPwdData>({
-  email: '',
-  phone_number: '',
-  password: '',
-  code: '',
-  check_password: ''
+	email: "",
+	phone_number: "",
+	password: "",
+	code: "",
+	check_password: "",
 });
 
 // 根据表单验证状态判断是否可以提交
@@ -73,49 +73,45 @@ const resetPwdForm = ref<ResetPwdData>({
 const phone = /0?(13|14|15|18|17)[0-9]{9}/;
 
 const Pwdrules = ref({
-  email: [
-    { required: true, message: '请输入邮箱', trigger: 'blur' },
-    { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur'] }
-  ],
-  code: [
-    { required: true, message: '请输入验证码', trigger: 'blur' }
-  ],
-  phone_number: [
-    { required: true, message: '请输入手机号', trigger: 'blur' },
-    { pattern: phone, message: '请输入正确的手机号', trigger: ['blur'] }
-  ],
-  password: [
-    { required: true, message: '请输入密码', trigger: 'blur' }
-  ],
-  check_password: [
-    { required: true, message: '请再次输入密码', trigger: 'blur' },
-    {
-      validator: (_rule: any, value: string, callback: any) => {
-        if (value === '') {
-          callback(new Error('请再次输入密码'));
-        } else if (value !== resetPwdForm.value.password) {
-          callback(new Error('两次输入密码不一致!'));
-        } else {
-          callback();
-        }
-      },
-      trigger: 'blur'
-    }
-  ]
+	email: [
+		{ required: true, message: "请输入邮箱", trigger: "blur" },
+		{ type: "email", message: "请输入正确的邮箱地址", trigger: ["blur"] },
+	],
+	code: [{ required: true, message: "请输入验证码", trigger: "blur" }],
+	phone_number: [
+		{ required: true, message: "请输入手机号", trigger: "blur" },
+		{ pattern: phone, message: "请输入正确的手机号", trigger: ["blur"] },
+	],
+	password: [{ required: true, message: "请输入密码", trigger: "blur" }],
+	check_password: [
+		{ required: true, message: "请再次输入密码", trigger: "blur" },
+		{
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+			validator: (_rule: any, value: string, callback: any) => {
+				if (value === "") {
+					callback(new Error("请再次输入密码"));
+				} else if (value !== resetPwdForm.value.password) {
+					callback(new Error("两次输入密码不一致!"));
+				} else {
+					callback();
+				}
+			},
+			trigger: "blur",
+		},
+	],
 });
 
 const fipped = defineModel({
-  required: true,
-  type: Boolean,
-  default: false
-})
+	required: true,
+	type: Boolean,
+	default: false,
+});
 
 const backLogin = () => {
-  fipped.value = false;
+	fipped.value = false;
 };
 
 const counter = ref(0);
 
 const sended = ref(false);
-
 </script>

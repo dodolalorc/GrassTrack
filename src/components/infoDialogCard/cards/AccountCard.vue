@@ -50,23 +50,21 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-import { ElMessage } from 'element-plus';
+import { ref } from "vue";
+import { ElMessage } from "element-plus";
 
 const editStatus = ref(false);
 const receiveSMS = ref(1);
 const receiveEmail = ref(0);
 const editPhone = ref(false);
 const editEmail = ref(false);
-const phone = ref('18888888888');
-const email = ref('example123@qq.com');
+const phone = ref("18888888888");
+const email = ref("example123@qq.com");
 
 const updateInfo = () => {
-  ElMessage.success('提交成功');
-  editStatus.value = !editStatus.value;
-}
-
-
+	ElMessage.success("提交成功");
+	editStatus.value = !editStatus.value;
+};
 </script>
 <style scoped>
 /* :deep(.my-label) {} */

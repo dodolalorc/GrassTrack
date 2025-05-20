@@ -78,25 +78,24 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import forageImage from '@/assets/img/forage.png';
+import { ref } from "vue";
+import forageImage from "@/assets/img/forage.png";
 
 interface Cattle {
-  name: string;
-  url: string;
-  count: number;
+	name: string;
+	url: string;
+	count: number;
 }
 const cattleList = ref<Cattle[]>([
-  {
-    name: '牛类',
-    url: new URL('@/assets/icon/cattle/ox.svg', import.meta.url).href,
-    count: 130,
-  },
-  {
-    name: '羊类',
-    url: new URL('@/assets/icon/cattle/sheep.svg', import.meta.url).href,
-    count: 120,
-  }
+	{
+		name: "牛类",
+		url: new URL("@/assets/icon/cattle/ox.svg", import.meta.url).href,
+		count: 130,
+	},
+	{
+		name: "羊类",
+		url: new URL("@/assets/icon/cattle/sheep.svg", import.meta.url).href,
+		count: 120,
+	},
 ]);
-
 </script>

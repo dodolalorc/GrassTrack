@@ -46,25 +46,30 @@
   </el-dialog>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
-import ProfileCard from '@/components/infoDialogCard/cards/ProfileCard.vue';
-import AccountCard from '@/components/infoDialogCard/cards/AccountCard.vue';
-
+import { ref } from "vue";
+import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
+import ProfileCard from "@/components/infoDialogCard/cards/ProfileCard.vue";
+import AccountCard from "@/components/infoDialogCard/cards/AccountCard.vue";
 
 const categories = ref({
-  'profile': {
-    key: 'profile',
-    title: '个人资料',
-    content: '个人资料'
-  },
-  'account': {
-    key: 'account',
-    title: '账号信息',
-    content: '账号信息'
-  }
+	profile: {
+		key: "profile",
+		title: "个人资料",
+		content: "个人资料",
+	},
+	account: {
+		key: "account",
+		title: "账号信息",
+		content: "账号信息",
+	},
 });
 
-const dialogVisible = defineModel('dialogVisible', { type: Boolean, default: false });
-const currentTab = defineModel('currentTab', { type: String, default: 'profile' });
+const dialogVisible = defineModel("dialogVisible", {
+	type: Boolean,
+	default: false,
+});
+const currentTab = defineModel("currentTab", {
+	type: String,
+	default: "profile",
+});
 </script>

@@ -10,6 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import BackGround from '@/components/common/BackGround.vue';
-import TabCard from '@/views/LogReg/LogIn/components/TabCard.vue';
+import BackGround from "@/components/common/BackGround.vue";
+import TabCard from "@/views/LogReg/LogIn/components/TabCard.vue";
 </script>

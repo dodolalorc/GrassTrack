@@ -38,34 +38,35 @@
 </template>
 
 <script setup lang="ts">
-import { grasslandInfoList } from '@/api/apis/grassland';
-import { grasslandInfo } from '@/types/apis/grassland';
-import AddGlasslandDialog from '@/components/glassland/AddGlasslandDialog.vue';
-import { ref } from 'vue'
+import { grasslandInfoList } from "@/api/apis/grassland";
+import type { grasslandInfo } from "@/types/apis/grassland";
+import AddGlasslandDialog from "@/components/glassland/AddGlasslandDialog.vue";
+import { ref } from "vue";
 
 const tableData = ref<grasslandInfo[]>([]);
 
 const fetchGrasslandInfo = () => {
-  grasslandInfoList().then((response) => {
-    const res = response.data;
-    console.log('获取牧场信息', res);
-    if (res.code === 0) {
-      if (res.data) {
-      tableData.value = res.data;
-      }
-    } else {
-      console.error('获取牧场信息失败', res.message);
-    }
-  }).catch((error) => {
-    console.error('请求错误', error);
-  });
-}
+	grasslandInfoList()
+		.then((response) => {
+			const res = response.data;
+			console.log("获取牧场信息", res);
+			if (res.code === 0) {
+				if (res.data) {
+					tableData.value = res.data;
+				}
+			} else {
+				console.error("获取牧场信息失败", res.message);
+			}
+		})
+		.catch((error) => {
+			console.error("请求错误", error);
+		});
+};
 fetchGrasslandInfo();
 
 const dialogVisible = ref(false);
 const handleAddGrassland = () => {
-  dialogVisible.value = true;
-}
+	dialogVisible.value = true;
+};
 const currentGlasslandInfo = ref<grasslandInfo>({} as grasslandInfo);
-
 </script>

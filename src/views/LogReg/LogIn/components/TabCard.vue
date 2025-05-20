@@ -42,28 +42,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
-import LoginCardCover from './cards/passwordCardCover.vue';
-import RegisterCard from './cards/captchaCard.vue';
+import { ref } from "vue";
+import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
+import LoginCardCover from "./cards/passwordCardCover.vue";
+import RegisterCard from "./cards/captchaCard.vue";
 import Icon from "@/assets/icon.svg";
 
-const title = ref('草畜平衡决策预警系统');
+const title = ref("草畜平衡决策预警系统");
 
 const categories = ref({
-  'byPassword': {
-    key: 'byPassword',
-    title: '密码登录',
-    content: '密码登录'
-  }
-  ,
-  'byCaptcha': {
-    key: 'byCaptcha',
-    title: '验证码登录',
-    content: '验证码登录'
-  }
+	byPassword: {
+		key: "byPassword",
+		title: "密码登录",
+		content: "密码登录",
+	},
+	byCaptcha: {
+		key: "byCaptcha",
+		title: "验证码登录",
+		content: "验证码登录",
+	},
 });
-
 </script>
 
 <style scoped></style>

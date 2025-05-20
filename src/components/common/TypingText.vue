@@ -65,9 +65,9 @@ span {
 </style>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-const typingText = defineModel('typingText', {
-  type: String,
-  default: ''
+import { ref } from "vue";
+const typingText = defineModel("typingText", {
+	type: String,
+	default: "",
 });
 </script>

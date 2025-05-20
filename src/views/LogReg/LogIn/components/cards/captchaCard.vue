@@ -23,35 +23,37 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { ElMessage } from 'element-plus';
+import { ref } from "vue";
+import { ElMessage } from "element-plus";
 
 const sended = ref(false);
 
 const counter = ref(0);
 
 interface formData {
-  phone: string;
-  verifyCode: string;
+	phone: string;
+	verifyCode: string;
 }
 
 const registerRef = ref();
 
 const ruleForm = ref<formData>({
-  phone: '',
-  verifyCode: '',
+	phone: "",
+	verifyCode: "",
 });
 
 const rules = ref({
-  phone: [
-    { required: true, message: '请输入手机号码', trigger: 'blur' },
-    { pattern: /^1[34578]\d{9}$/, message: '手机号码格式不正确', trigger: 'blur' }
-  ],
-  verifyCode: [
-    { required: true, message: '请输入验证码', trigger: 'blur' },
-    { min: 6, max: 6, message: '验证码长度为6位', trigger: 'blur' }
-  ],
+	phone: [
+		{ required: true, message: "请输入手机号码", trigger: "blur" },
+		{
+			pattern: /^1[34578]\d{9}$/,
+			message: "手机号码格式不正确",
+			trigger: "blur",
+		},
+	],
+	verifyCode: [
+		{ required: true, message: "请输入验证码", trigger: "blur" },
+		{ min: 6, max: 6, message: "验证码长度为6位", trigger: "blur" },
+	],
 });
-
-
 </script>

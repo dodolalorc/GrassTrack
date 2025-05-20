@@ -59,66 +59,78 @@
 </template>
 
 <script setup lang="ts">
-import { grasslandInfo } from '@/types/apis/grassland';
-import { ref } from 'vue';
+import type { grasslandInfo } from "@/types/apis/grassland";
+import { ElMessage, ElMessageBox } from "element-plus";
+import type { FormInstance, ElForm } from "element-plus";
+import { ref } from "vue";
 
-const visible = defineModel('visible', {
-  default: false,
-  type: Boolean,
-  required: true,
+const visible = defineModel("visible", {
+	default: false,
+	type: Boolean,
+	required: true,
 });
-const glasslandInfo = defineModel('glassland-info', {
-  default: {
-    grassId: 0,
-    area: 0,
-    type: '',
-    yield: 0,
-    year: 0,
-    month: 0,
-  } as grasslandInfo,
-  type: Object,
-  required: true,
+const glasslandInfo = defineModel("glassland-info", {
+	default: {
+		grassId: 0,
+		area: 0,
+		type: "",
+		yield: 0,
+		year: 0,
+		month: 0,
+	} as grasslandInfo,
+	type: Object,
+	required: true,
 });
 
-const tableData = defineModel('table-data', {
-  default: [],
-  type: Array,
-  required: true,
+const tableData = defineModel("table-data", {
+	default: [],
+	type: Array,
+	required: true,
 });
-const formRef = ref();
+const formRef = ref<FormInstance>();
 const rules = {
-  grassId: [
-    { required: true, message: '请输入草场ID', trigger: 'blur' },
-    { type: 'number', message: '草场ID必须为数字', trigger: 'blur' },
-  ],
-  area: [
-    { required: true, message: '请输入草场面积', trigger: 'blur' },
-    { type: 'number', message: '草场面积必须为数字', trigger: 'blur' },
-  ],
-  type: [
-    { required: true, message: '请输入草场类型', trigger: 'blur' },
-  ],
-  yield: [
-    { required: true, message: '请输入草场产量', trigger: 'blur' },
-    { type: 'number', message: '草场产量必须为数字', trigger: 'blur' },
-  ],
-  year: [
-    { required: true, message: '请输入年份', trigger: 'blur' },
-    { type: 'number', message: '年份必须为数字', trigger: 'blur' },
-  ],
-  month: [
-    { required: true, message: '请选择月份', trigger: 'change' },
-  ],
+	grassId: [
+		{ required: true, message: "请输入草场ID", trigger: "blur" },
+		{ type: "number", message: "草场ID必须为数字", trigger: "blur" },
+	],
+	area: [
+		{ required: true, message: "请输入草场面积", trigger: "blur" },
+		{ type: "number", message: "草场面积必须为数字", trigger: "blur" },
+	],
+	type: [{ required: true, message: "请输入草场类型", trigger: "blur" }],
+	yield: [
+		{ required: true, message: "请输入草场产量", trigger: "blur" },
+		{ type: "number", message: "草场产量必须为数字", trigger: "blur" },
+	],
+	year: [
+		{ required: true, message: "请输入年份", trigger: "blur" },
+		{ type: "number", message: "年份必须为数字", trigger: "blur" },
+	],
+	month: [{ required: true, message: "请选择月份", trigger: "change" }],
 };
 
-const submitForm = (formRef: any) => {
-  formRef.value.validate((valid: boolean) => {
-    if (valid) {
-      // 提交表单
-      console.log('提交表单', glasslandInfo);
-    } else {
-      console.log('表单验证失败');
-    }
-  });
+const submitForm = async (formEl: FormInstance | undefined) => {
+	if (!formEl) {
+		ElMessage.error("表单不存在");
+		return;
+	}
+	await formEl.validate((valid, fields) => {
+		if (valid) {
+			ElMessageBox.confirm("确认提交吗？", "提示", {
+				confirmButtonText: "确定",
+				cancelButtonText: "取消",
+				type: "warning",
+			}).then(() => {
+				visible.value = false;
+				sendUpdateInfo();
+			});
+		} else {
+			ElMessage.error("请填写完整信息");
+		}
+	});
+};
+const sendUpdateInfo = () => {
+	// TODO: 发送更新信息的请求
+	console.log("发送更新信息的请求", glasslandInfo.value);
 };
 </script>

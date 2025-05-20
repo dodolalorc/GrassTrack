@@ -72,10 +72,9 @@
 </style>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import passwordCard from './passwordCard.vue';
-import ResetPwdCard from './ResetPwdCard.vue';
+import { ref } from "vue";
+import passwordCard from "./passwordCard.vue";
+import ResetPwdCard from "./ResetPwdCard.vue";
 
 const fipped = ref(false);
-
 </script>

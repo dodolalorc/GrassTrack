@@ -46,85 +46,93 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { ElMessage, ElMessageBox } from 'element-plus'
-import { AnimalInfo, AnimalTypeInfo } from '@/types/AnimalInfo';
-import { AnimalInfoDel, AnimalInfoList, AnimalType } from '@/api/apis/animal';
-import { CommonResp } from '@/types/apis/common';
-import AddAnimalDialog from '@/components/animal/AddAnimalDialog.vue';
+import { ref } from "vue";
+import { ElMessage, ElMessageBox } from "element-plus";
+import type { AnimalInfo, AnimalTypeInfo } from "@/types/AnimalInfo";
+import { AnimalInfoDel, AnimalInfoList, AnimalType } from "@/api/apis/animal";
+import type { CommonResp } from "@/types/apis/common";
+import AddAnimalDialog from "@/components/animal/AddAnimalDialog.vue";
 
-const search = ref(''); // 搜索框的值
+const search = ref(""); // 搜索框的值
 
 const animalTypeList = ref<AnimalTypeInfo[]>([] as AnimalTypeInfo[]);
 const currentAnimalInfo = ref<AnimalInfo>({} as AnimalInfo);
 const tableData = ref<AnimalInfo[]>([] as AnimalInfo[]);
 
 const fetchAnimalTypeInfo = () => {
-  AnimalType().then((response) => {
-    const res = response.data as CommonResp;
-    if (res.code === 0) {
-      animalTypeList.value = res.data;
-      fetchAnimalInfo();
-    } else {
-      ElMessage.error(res.msg);
-    }
-  }).catch((error) => {
-    ElMessage.error('获取牲畜种类信息失败，请稍后重试');
-  });
+	AnimalType()
+		.then((response) => {
+			const res = response.data as CommonResp;
+			if (res.code === 0) {
+				animalTypeList.value = res.data as AnimalTypeInfo[];
+				fetchAnimalInfo();
+			} else {
+				ElMessage.error(res.msg);
+			}
+		})
+		.catch((error) => {
+			ElMessage.error("获取牲畜种类信息失败，请稍后重试");
+		});
 };
 fetchAnimalTypeInfo();
 const fetchAnimalInfo = () => {
-  AnimalInfoList().then((response) => {
-    const res = response.data as CommonResp;
-    if (res.code === 0) {
-      tableData.value = res.data;
-    }
-  }).catch((error) => {
-    ElMessage.error('获取牲畜信息失败，请稍后重试');
-  });
-}
+	AnimalInfoList()
+		.then((response) => {
+			const res = response.data as CommonResp;
+			if (res.code === 0) {
+				tableData.value = res.data as AnimalInfo[];
+			}
+		})
+		.catch((error) => {
+			ElMessage.error("获取牲畜信息失败，请稍后重试");
+		});
+};
 
 const dialogVisible = ref(false); // 控制对话框的显示和隐藏
-const updateAnimalTypeInfo = (index: any) => {
-  if (index === undefined) {
-    currentAnimalInfo.value = {} as AnimalInfo;
-    dialogVisible.value = true;
-    return;
-  }
-  currentAnimalInfo.value = { ...tableData.value[index] };
-  dialogVisible.value = true;
-}
+const updateAnimalTypeInfo = (index: number | undefined) => {
+	if (index === undefined) {
+		currentAnimalInfo.value = {} as AnimalInfo;
+		dialogVisible.value = true;
+		return;
+	}
+	currentAnimalInfo.value = { ...tableData.value[index] };
+	dialogVisible.value = true;
+};
 
 const handleSelectionChange = (val: AnimalInfo[]) => {
-  delList.value = val.map((item) => item.id);
-}
+	delList.value = val.map((item) => item.id);
+};
 const delList = ref<number[]>([]);
 const handleDel = () => {
-  if (delList.value.length === 0) {
-    ElMessage.warning('请选择要删除的记录');
-    return; 
-  }
-  ElMessageBox.confirm('确认删除选中记录吗？', '提示', {
-    confirmButtonText: '确定',
-    cancelButtonText: '取消',
-    type: 'warning',
-  }).then(() => {
-    const data = delList.value
-    AnimalInfoDel(data).then((response) => {
-      const res = response.data as CommonResp;
-      if (res.code === 0) {
-        delList.value = [] as number[];
-        ElMessage.success('删除成功');
-        fetchAnimalInfo();
-      }
-    }).catch((error) => {
-      ElMessage.error('删除失败，请稍后重试');
-    });
-  }).catch(() => {
-    ElMessage({
-      type: 'info',
-      message: '已取消删除',
-    });
-  });
-}
+	if (delList.value.length === 0) {
+		ElMessage.warning("请选择要删除的记录");
+		return;
+	}
+	ElMessageBox.confirm("确认删除选中记录吗？", "提示", {
+		confirmButtonText: "确定",
+		cancelButtonText: "取消",
+		type: "warning",
+	})
+		.then(() => {
+			const data = delList.value;
+			AnimalInfoDel(data)
+				.then((response) => {
+					const res = response.data as CommonResp;
+					if (res.code === 0) {
+						delList.value = [] as number[];
+						ElMessage.success("删除成功");
+						fetchAnimalInfo();
+					}
+				})
+				.catch((error) => {
+					ElMessage.error("删除失败，请稍后重试");
+				});
+		})
+		.catch(() => {
+			ElMessage({
+				type: "info",
+				message: "已取消删除",
+			});
+		});
+};
 </script>

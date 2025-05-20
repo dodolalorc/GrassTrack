@@ -1,64 +1,64 @@
-import { RouteRecordRaw } from 'vue-router';
+import type { RouteRecordRaw } from "vue-router";
 
 export default [
-  {
-    name: 'Home',
-    path: '/',
-    meta: { requiresAuth: true },
-    component: () => import('@/views/Home.vue'),
-    children: [
-      {
-        name: 'Dashboard',
-        path: '',
-        component: () => import('@/views/Dashboard/Dashboard.vue'),
-      },
-      {
-        name: 'Cattle',
-        path: 'Cattle',
-        component: () => import('@/views/Cattle/Cattle.vue'),
-      },
-      {
-        name: 'Forage',
-        path: 'forage',
-        component: () => import('@/views/Forage/Forage.vue'),
-      },
-      {
-        name: 'Balance',
-        path: 'balance',
-        component: () => import('@/views/Balance/Balance.vue'),
-      },
-      {
-        name: 'Submit',
-        path: 'question/submit',
-        component: () => import('@/views/Submissions/Submissions.vue'),
-      },
-      {
-        name: 'History',
-        path: 'question/history',
-        component: () => import('@/views/Submissions/History.vue'),
-      },
-      {
-        name: 'Profile',
-        path: 'profile',
-        component: () => import('@/views/Accounts/profile.vue'),
-      },
-      {
-        name: 'Account',
-        path: 'account',
-        component: () => import('@/views/Accounts/account.vue'),
-      }
-    ],
-  },
-  {
-    name: 'Login',
-    path: '/login',
-    meta: { requiresAuth: false },
-    component: () => import('@/views/LogReg/LogIn/index.vue'),
-  },
-  {
-    name: 'Register',
-    path: '/signup',
-    meta: { requiresAuth: false },
-    component: () => import('@/views/LogReg/SignUp/index.vue'),
-  }
+	{
+		name: "Home",
+		path: "/",
+		meta: { requiresAuth: true },
+		component: () => import("@/views/Home.vue"),
+		children: [
+			{
+				name: "Dashboard",
+				path: "",
+				component: () => import("@/views/Dashboard/Dashboard.vue"),
+			},
+			{
+				name: "Cattle",
+				path: "Cattle",
+				component: () => import("@/views/Cattle/Cattle.vue"),
+			},
+			{
+				name: "Forage",
+				path: "forage",
+				component: () => import("@/views/Forage/Forage.vue"),
+			},
+			{
+				name: "Balance",
+				path: "balance",
+				component: () => import("@/views/Balance/Balance.vue"),
+			},
+			{
+				name: "Submit",
+				path: "question/submit",
+				component: () => import("@/views/Submissions/Submissions.vue"),
+			},
+			{
+				name: "History",
+				path: "question/history",
+				component: () => import("@/views/Submissions/History.vue"),
+			},
+			{
+				name: "Profile",
+				path: "profile",
+				component: () => import("@/views/Accounts/Profile.vue"),
+			},
+			{
+				name: "Account",
+				path: "account",
+				component: () => import("@/views/Accounts/Account.vue"),
+			},
+		],
+	},
+	{
+		name: "Login",
+		path: "/login",
+		meta: { requiresAuth: false },
+		component: () => import("@/views/LogReg/LogIn/index.vue"),
+	},
+	{
+		name: "Register",
+		path: "/signup",
+		meta: { requiresAuth: false },
+		component: () => import("@/views/LogReg/SignUp/index.vue"),
+	},
 ] as RouteRecordRaw[];

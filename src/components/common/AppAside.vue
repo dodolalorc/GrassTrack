@@ -79,86 +79,85 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { onMounted } from 'vue';
-import { checkDevice } from '@/utils/checkDevice';
-import SiteTitle from './SiteTitle.vue';
-import type { DrawerProps } from 'element-plus';
-import { useRouter, useRoute } from 'vue-router';
-import avatar from '@/assets/img/avatar.jpg';
+import { ref } from "vue";
+import { onMounted } from "vue";
+import { checkDevice } from "@/utils/checkDevice";
+import SiteTitle from "./SiteTitle.vue";
+import type { DrawerProps } from "element-plus";
+import { useRouter, useRoute } from "vue-router";
+import avatar from "@/assets/img/avatar.jpg";
 
 const route = useRoute();
 const router = useRouter();
 
-const curDevice = ref('mobile');
+const curDevice = ref("mobile");
 onMounted(() => {
-  curDevice.value = checkDevice();
+	curDevice.value = checkDevice();
 });
 
-
-const drawerVisible = defineModel('drawerVisible', {
-  default: false,
-  type: Boolean,
+const drawerVisible = defineModel("drawerVisible", {
+	default: false,
+	type: Boolean,
 });
-const drawerType = defineModel('drawerType', {
-  default: 'menuList',
-  type: String,
+const drawerType = defineModel("drawerType", {
+	default: "menuList",
+	type: String,
 });
 
-const drawerDirection = ref<DrawerProps['direction']>('ttb'); // top to bottom 
+const drawerDirection = ref<DrawerProps["direction"]>("ttb"); // top to bottom
 
 interface MenuItem {
-  title: string;
-  name: string,
-  icon: string;
-  link: string;
-  children?: MenuItem[];
+	title: string;
+	name: string;
+	icon: string;
+	link: string;
+	children?: MenuItem[];
 }
 
 const menuList = ref<MenuItem[]>([
-  {
-    title: '主页',
-    icon: 'fa-solid fa-house',
-    name: 'Dashboard',
-    link: '/',
-  },
-  {
-    title: '牲畜管理',
-    icon: 'fa-solid fa-cow',
-    name: 'Cattle',
-    link: '/cattle',
-  },
-  {
-    title: '牧场管理',
-    icon: 'fa-solid fa-leaf',
-    name: 'Forage',
-    link: '/forage'
-  },
-  {
-    title: '草畜平衡',
-    icon: 'fa-solid fa-balance-scale',
-    name: 'Balance',
-    link: '/balance'
-  },
-  {
-    title: '专家咨询',
-    icon: 'fa-solid fa-upload',
-    name: 'Submissions',
-    link: '/question/submit',
-    children: [
-      {
-        title: '提交问题',
-        icon: 'fa-solid fa-question',
-        name: 'Submit',
-        link: '/question/submit'
-      },
-      {
-        title: '历史问题',
-        icon: 'fa-solid fa-clock-rotate-left',
-        name: 'History',
-        link: '/question/history',
-      }
-    ],
-  }
-])
+	{
+		title: "主页",
+		icon: "fa-solid fa-house",
+		name: "Dashboard",
+		link: "/",
+	},
+	{
+		title: "牲畜管理",
+		icon: "fa-solid fa-cow",
+		name: "Cattle",
+		link: "/cattle",
+	},
+	{
+		title: "牧场管理",
+		icon: "fa-solid fa-leaf",
+		name: "Forage",
+		link: "/forage",
+	},
+	{
+		title: "草畜平衡",
+		icon: "fa-solid fa-balance-scale",
+		name: "Balance",
+		link: "/balance",
+	},
+	{
+		title: "专家咨询",
+		icon: "fa-solid fa-upload",
+		name: "Submissions",
+		link: "/question/submit",
+		children: [
+			{
+				title: "提交问题",
+				icon: "fa-solid fa-question",
+				name: "Submit",
+				link: "/question/submit",
+			},
+			{
+				title: "历史问题",
+				icon: "fa-solid fa-clock-rotate-left",
+				name: "History",
+				link: "/question/history",
+			},
+		],
+	},
+]);
 </script>
