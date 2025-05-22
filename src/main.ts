@@ -3,7 +3,7 @@ import "./style.css";
 import App from "./App.vue";
 
 import { createPinia } from "pinia";
-import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
@@ -11,7 +11,7 @@ import "element-plus/dist/index.css";
 import router from "./routers";
 
 const pinia = createPinia();
-pinia.use(piniaPluginPersistedstate);
+pinia.use(piniaPluginPersistedstate)
 
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
