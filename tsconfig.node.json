@@ -1,31 +1,19 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
-    "target": "ES2022",
-    "lib": [
-      "ES2023"
-    ],
-    "module": "ESNext",
-    "composite": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    /* Bundler mode */
-    "moduleResolution": "Node",
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "noEmit": false,
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
-  },
+  "extends": "@tsconfig/node22/tsconfig.json",
   "include": [
-    "vite.config.ts"
-  ]
+    "vite.config.*",
+    "vitest.config.*",
+    "cypress.config.*",
+    "nightwatch.conf.*",
+    "playwright.config.*",
+    "eslint.config.*"
+  ],
+  "compilerOptions": {
+    "noEmit": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "types": ["node"]
+  }
 }

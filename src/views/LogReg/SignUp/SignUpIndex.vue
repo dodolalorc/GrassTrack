@@ -19,16 +19,15 @@
       <div class="w-full h-fit">
         <RegisterForm />
       </div>
-
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import BackGround from "@/components/common/BackGround.vue";
-import RegisterForm from "./cards/RegisterForm.vue";
+import { ref } from 'vue'
+import BackGround from '@/components/common/BackGround.vue'
+import RegisterForm from './cards/RegisterForm.vue'
 
-const title = ref("草畜平衡决策预警系统");
-const greeting = ref("欢迎注册使用本系统！");
+const title = ref('草畜平衡决策预警系统')
+const greeting = ref('欢迎注册使用本系统！')
 </script>

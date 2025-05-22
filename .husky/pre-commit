@@ -1,0 +1,2 @@
+bun format
+npx lint-staged --allow-empty "$1"

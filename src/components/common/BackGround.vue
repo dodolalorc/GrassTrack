@@ -1,6 +1,8 @@
 <template>
   <!-- 白色遮罩层 -->
-  <div class="bg-pasture-bg absolute top-0 left-0 inset-0 bg-no-repeat bg-center bg-cover blur-sm opacity-80 bg-fixed" />
+  <div
+    class="bg-[url(@/assets/img/pasture.png)] absolute top-0 left-0 inset-0 bg-no-repeat bg-center bg-cover blur-sm opacity-80 bg-fixed"
+  />
   <div class="white-overlay" />
 </template>
 <style scoped lang="scss">

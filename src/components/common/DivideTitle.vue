@@ -9,8 +9,8 @@
 </template>
 
 <script setup lang="ts">
-const title = defineModel("title", {
-	type: String,
-	default: "Title",
-});
+const title = defineModel('title', {
+  type: String,
+  default: 'Title',
+})
 </script>

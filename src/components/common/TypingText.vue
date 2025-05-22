@@ -12,7 +12,7 @@
 
 <style scoped lang="scss">
 .typing {
-  font-family: "Courier";
+  font-family: Courier;
   font-size: 15px;
   margin: 6px 0 0 6px;
   white-space: nowrap;
@@ -55,7 +55,7 @@ span {
 
 @keyframes blink {
   to {
-    opacity: .0;
+    opacity: 0;
   }
 }
 
@@ -65,9 +65,8 @@ span {
 </style>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-const typingText = defineModel("typingText", {
-	type: String,
-	default: "",
-});
+const typingText = defineModel('typingText', {
+  type: String,
+  default: '',
+})
 </script>

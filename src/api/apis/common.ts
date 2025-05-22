@@ -1,4 +1,4 @@
 export interface userLoginByPswdRes {
-	username: string;
-	password: string;
+  username: string
+  password: string
 }
